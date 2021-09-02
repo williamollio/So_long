@@ -1,33 +1,41 @@
 CC = GCC
 
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = solong.h
 
 NAME = solong.a
 
-SOURCES = $(wildcard *.c)
+SOURCES = main.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
-MAKE = make
-
 LIBFT_PATH = ./libft/
+MLX_PATH = ./minilibx/
 
 all: subsystem $(NAME)
 
 subsystem :
-	$(MAKE) -C libft
+	make -C ./libft
+	cp ./libft/libft.a libft.a
+	make -C ./minilibx
+	cp ./minilibx/libmlx.a libmlx.a
 
-$(NAME): $(OBJECTS)
-	ar cr $@ $(OBJECTS) $(LIBFT_PATH)*.o
+$(NAME): subsystem $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) libft.a libmlx.a -framework OpenGL -framework AppKit -o so_long
 
 bonus: all
 
 clean:
-	rm -f $(OBJECTS) $(LIBFT_PATH)*.o
+	rm -f $(OBJECTS)
+	rm -f $(LIBFT_PATH)*.o
+	rm -f $(MLX_PATH)*.o
 
 fclean: clean
-	rm -f $(NAME) $(LIBFT_PATH)libft.a
+	rm -f $(NAME)
+	rm -f $(LIBFT_PATH)libft.a
+	rm -f $(MLX_PATH)libmlx.a
+	rm -f libft.a libmlx.a
+	rm -f so_long
 
 re: fclean all
