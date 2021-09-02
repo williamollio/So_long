@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 09:56:50 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/02 11:58:13 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/02 15:45:29 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	map_init(t_map *l_map)
 	l_map->y = 0;
 }
 
-int firstcheck(char *map, t_map *l_map)
+int map_char(char *map, t_map *l_map)
 {
 	int i;
 
@@ -70,24 +70,103 @@ int firstcheck(char *map, t_map *l_map)
 	return (1);
 }
 
+void numberofline(char *map, t_map *l_map)
+{
+	int i;
+	int j;
 
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		if(map[i] == '\n')
+			l_map->y++;
+		i++;
+	}
+	return;
+}
+int	map_wall(char *map, t_map *l_map)
+{
+	int i;
+	int lines;
+
+	i = 0;
+	lines = 0;
+	numberofline(map, l_map);
+	while (map[i])
+	{
+		if (map[i] == '\n')
+		{
+			lines++;
+			if (map[i-1] != '1' || !((map[i+1] == '1') || (map[i+1] == '\0')))
+			{
+			printf("i2 : %d\n", i);
+			return (0);
+			}
+		}
+		if (lines == 0 && map[i] != '1')
+		{
+			printf("i1 : %d\n", i);
+			return (0);
+		}
+		if (lines == l_map->y)
+		{
+			i++;
+			while(map[i])
+			{
+				if (map[i]!= '1')
+				{
+					printf("i3 : %d\n", i);
+					return (0);
+				}
+				i++;
+			}
+			i--;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int map_line(char *map, t_map *l_map)
+{
+	int i;
+	int j;
+	int x;
+
+	i = 0;
+	j = 0;
+	x = 0;
+	while (map[i])
+	{
+		if (map[i] == '\n')
+		{
+			j = i;
+			i++;
+			while(map[i] != '\n')
+				i++;
+			x = i - j;
+		}
+		if (x != j)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 int	checkmap(char *map, int *width, int *height)
 {
 	t_map l_map;
-	width = 0;
-	height = 0;
+
 
 	map_init(&l_map);
-	if (firstcheck(map, &l_map) == 1)
+	if (map_char(map, &l_map) && map_wall(map, &l_map) && map_line(map, &l_map))
 	{
-		printf("firstcheck is ok\n");
-		return 1;
+		printf("firstcheck && map_walls && map_line are fine\n");
+		return (1);
 	}
-	else
-	{
-		printf("firstcheck isn't ok\n");
-		return 0;
-	}
+	*width = 0;
+	*height = l_map.y + 1;
+	return 0;
 
 }
 int	main(int argc, char *argv[])
