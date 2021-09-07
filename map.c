@@ -6,12 +6,13 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:38:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/06 15:22:14 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/07 14:47:04 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* Initialization of the struct l_map */
 void	map_init(t_map *l_map)
 {
 	l_map->c = 0;
@@ -90,6 +91,7 @@ int	map_wall(char *map, t_map *l_map)
 	return (1);
 }
 
+/* Build function to free a two dimensional array */
 void double_free(char **map_split, t_map *l_map)
 {
 	int	i;
