@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 10:07:09 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/07 14:54:25 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/10 11:19:53 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ It provides simple window creation, a drawing tool, image and basic events manag
 # define SO_LONG
 
 /* Keycodes */
-# define KEY_Q 12
+# define KEY_A 0
+# define KEY_D 2
 # define KEY_W 13
-# define KEY_E 14
-# define KEY_R 15
+# define KEY_S 1
+# define KEY_ESC 53
 
 /* Include my libft, the minilibx library and the some others librairies */
 # include "./libft/libft.h"
@@ -91,12 +92,31 @@ int		checkmap(char *map, int *width, int *height);
 
 /* Creation map of the game */
 void	ft_game(char *map, int width, int height);
-void init_windows(t_windows *win, int width, int height);
+void	init_windows(t_window *win, int width, int height);
 void	init_counter(t_counter *count);
 
 /* Push the items on the window */
-void	push_images(char pos, t_windows win, t_counter count);
+void	push_items(char pos, t_window *win, t_counter *count);
+void	push_figure(t_window *win, t_counter *count);
+void	push_collect(t_window *win, t_counter *count);
+void	push_exit(t_window *win, t_counter *count);
+void	push_walls(t_window *win, t_counter *count);
 
+/* Get keystrokes and move player */
+int		move_down(t_window *win);
+int		move_right(t_window *win);
+int		move_left(t_window *win);
+int		move_up(t_window *win);
+int		key_hook(int keycode, t_window *win);
+
+/* Check for walls and collectables */
+int		walls_down(t_window *win);
+int		walls_right(t_window *win);
+int		walls_left(t_window *win);
+int		walls_up(t_window *win);
+int		collect(t_window *win);
+
+int	close_window(void);
 
 /*
 Copyrights images

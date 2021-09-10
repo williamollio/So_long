@@ -6,11 +6,13 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:38:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/07 14:47:04 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/10 11:27:23 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+//add condition only one player
 
 /* Initialization of the struct l_map */
 void	map_init(t_map *l_map)
@@ -129,7 +131,7 @@ int map_line(char *map, t_map *l_map)
 
 int map_valid(t_map *l_map)
 {
-	if (l_map->c >= 1 && l_map->p >= 1 && l_map->e >= 1 &&
+	if (l_map->c >= 1 && l_map->p == 1 && l_map->e >= 1 &&
 		l_map->x >= 1 &&l_map->y >= 1)
 		return (1);
 	else

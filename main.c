@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 09:56:50 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/07 11:08:47 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/10 14:39:55 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	main(int argc, char *argv[])
 		free(map);
 		return (0);
 	}
-	//ft_game(map, width, height);
-	ft_game(width, height);
+	ft_game(map, width, height);
 	free(map);
 	return (0);
 }

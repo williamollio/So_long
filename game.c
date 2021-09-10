@@ -6,13 +6,13 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 10:38:00 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/07 14:52:15 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/10 14:52:08 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* Initialization of the windows struct */
+/* Initialization of the window struct */
 void	init_windows(t_window *win, int width, int height)
 {
 	int img_width;
@@ -36,6 +36,7 @@ void	init_windows(t_window *win, int width, int height)
 	return;
 }
 
+/* Initialization of the counter struct */
 void	init_counter(t_counter *count)
 {
 	count->i = 0;
@@ -59,13 +60,24 @@ void	ft_game(char *map, int width, int height)
 		count.y = 0;
 		while (count.y < width)
 		{
-			push_images(map[count.i], &win, &count);
+			push_items(map[count.i], &win, &count);
 			count.y++;
 			count.i++;
 		}
 		count.x++;
 		count.i++;
 	}
+	printf("width %d\n", width);
+	printf("height %d\n", height);
+	printf("count.t %d\n", count.t);
+	printf("count.j %d\n", count.j);
+	printf("count.y %d\n", count.y);
+	printf("count.x %d\n", count.x);
+	printf("count.i %d\n", count.i);
+	win.wallsmax = count.t;
+	win.collectmax = count.j;
+	mlx_key_hook(win.mlx_win, key_hook, &win);
+	mlx_hook(win.mlx_win, 17, (1L << 17), close_window, &win);
 	mlx_loop(win.mlx);
 	return;
 }
