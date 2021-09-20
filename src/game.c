@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 10:38:00 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/20 18:42:18 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 19:17:50 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,6 @@ void	ft_game(char *map, int width, int height)
 		count.y++;
 		count.i++;
 	}
-	printf("width %d\n", width);
-	printf("height %d\n", height);
-	printf("count.t %d\n", count.t);
-	printf("count.j %d\n", count.j);
-	printf("count.y %d\n", count.y);
-	printf("count.x %d\n", count.x);
-	printf("count.i %d\n", count.i);
 	win.wallsmax = count.t;
 	win.collectmax = count.j;
 	mlx_key_hook(win.mlx_win, key_hook, &win);

@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:16:44 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/20 18:57:27 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 19:15:45 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	move_left(t_window *win)
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->floor,
 		win->x * 32, win->y * 32);
 	win->x--;
-	win->mov++;
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->figure,
 		win->x * 32, win->y * 32);
+	win->mov++;
 	return (1);
 }
 
@@ -37,9 +37,9 @@ int	move_right(t_window *win)
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->floor,
 		win->x * 32, win->y * 32);
 	win->x++;
-	win->mov++;
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->figure,
 		win->x * 32, win->y * 32);
+	win->mov++;
 	return (1);
 }
 
@@ -50,9 +50,9 @@ int	move_down(t_window *win)
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->floor,
 		win->x * 32, win->y * 32);
 	win->y++;
-	win->mov++;
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->figure,
 		win->x * 32, win->y * 32);
+	win->mov++;
 	return (1);
 }
 
@@ -63,36 +63,35 @@ int	move_up(t_window *win)
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->floor,
 		win->x * 32, win->y * 32);
 	win->y--;
-	win->mov++;
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->figure,
 		win->x * 32, win->y * 32);
+	win->mov++;
 	return (1);
 }
 
 /* Manage the moves of the figure and the modification done on the win */
 int	key_hook(int keycode, t_window *win)
 {
-	if ((win->banana == 0 && win->x == win->exitx
-			&& win->y == win->exity) || keycode == KEY_ESC)
-	{
-		mlx_destroy_window(win->mlx, win->mlx_win);
-		exit(0);
-	}
-	if (keycode == KEY_A && walls_left(win) == 1)
+	if (keycode == KEY_A && walls_left(win))
 		move_left(win);
-	if (keycode == KEY_D && walls_right(win) == 1)
+	if (keycode == KEY_D && walls_right(win))
 		move_right(win);
-	if (keycode == KEY_S && walls_down(win) == 1)
+	if (keycode == KEY_S && walls_down(win))
 		move_down(win);
-	if (keycode == KEY_W && walls_up(win) == 1)
+	if (keycode == KEY_W && walls_up(win))
 		move_up(win);
-	if (collect(win) == 1 && win->banana > 0)
+	if (collect(win))
 	{
 		mlx_put_image_to_window(win->mlx, win->mlx_win, win->floor,
 			win->x * 32, win->y * 32);
 		mlx_put_image_to_window(win->mlx, win->mlx_win, win->figure,
 			win->x * 32, win->y * 32);
 		win->banana--;
+	}
+	if (keycode == KEY_ESC || (win->banana == 0 && win->x == win->exitx && win->y == win->exity))
+	{
+		mlx_destroy_window(win->mlx, win->mlx_win);
+		exit(0);
 	}
 	printf("Movement count: %d\n", win->mov);
 	return (1);
