@@ -6,7 +6,7 @@ INCLUDES = solong.h
 
 NAME = solong.a
 
-SOURCES = main.c map.c game.c push.c move.c check.c
+SOURCES = ./src/main.c ./src/map.c ./src/game.c ./src/push.c ./src/move.c ./src/check.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

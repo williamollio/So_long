@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 10:07:09 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/10 11:19:53 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 18:39:07 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ MiniLibX is an easy way to create graphical software, without any X-Window/Cocoa
 It provides simple window creation, a drawing tool, image and basic events management.
 */
 
-#ifndef SO_LONG
-# define SO_LONG
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 /* Keycodes */
 # define KEY_A 0
@@ -27,8 +27,8 @@ It provides simple window creation, a drawing tool, image and basic events manag
 # define KEY_ESC 53
 
 /* Include my libft, the minilibx library and the some others librairies */
-# include "./libft/libft.h"
-# include "./minilibx/mlx.h"
+# include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 # include <fcntl.h>
 
 /* Struct made for checking the format of the map in input */
@@ -52,7 +52,7 @@ typedef struct window
 	void	*wall;
 	void	*exit;
 	int		banana;
-	int		steps;
+	int		mov;
 	int		height;
 	int		width;
 	int		x; // pos of figure

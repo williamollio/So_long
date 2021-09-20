@@ -6,11 +6,11 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 09:56:50 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/10 14:39:55 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 18:14:13 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	main(int argc, char *argv[])
 {
@@ -20,18 +20,18 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("There is no map bro\n");
+		printf("Error\nThere is no map\n");
 		return (0);
 	}
 	map = ft_map_to_string(argv[1]);
 	if (!map)
 	{
-		printf("The map can't be read somehow alta\n");
+		printf("Error\nThe map can't be read somehow\n");
 		return (0);
 	}
 	if (checkmap(map, &width, &height) == 0)
 	{
-		printf("There is a problem with your map digga\n");
+		printf("Error\nThere is a problem with your map\n");
 		free(map);
 		return (0);
 	}

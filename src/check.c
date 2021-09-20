@@ -6,11 +6,11 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:20:34 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/10 11:43:36 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 16:14:53 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 /* Check if there is wall at the bottom */
 int	walls_down(t_window *win)

@@ -6,13 +6,11 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:38:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/10 11:27:23 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 17:28:49 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-//add condition only one player
+#include "../includes/so_long.h"
 
 /* Initialization of the struct l_map */
 void	map_init(t_map *l_map)
@@ -59,6 +57,7 @@ void numberofline(char *map, t_map *l_map)
 	}
 	return;
 }
+
 int	map_wall(char *map, t_map *l_map)
 {
 	int	i;
@@ -93,7 +92,7 @@ int	map_wall(char *map, t_map *l_map)
 	return (1);
 }
 
-/* Build function to free a two dimensional array */
+/* Free a two dimensional array */
 void double_free(char **map_split, t_map *l_map)
 {
 	int	i;
