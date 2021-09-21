@@ -6,15 +6,9 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 10:07:09 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/20 18:39:07 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/21 11:53:58 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* Description
-
-MiniLibX is an easy way to create graphical software, without any X-Window/Cocoa programming knowledge.
-It provides simple window creation, a drawing tool, image and basic events management.
-*/
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -32,7 +26,7 @@ It provides simple window creation, a drawing tool, image and basic events manag
 # include <fcntl.h>
 
 /* Struct made for checking the format of the map in input */
-typedef struct	map
+typedef struct map
 {
 	int	c;
 	int	e;
@@ -55,13 +49,13 @@ typedef struct window
 	int		mov;
 	int		height;
 	int		width;
-	int		x; // pos of figure
-	int		y; // pos of figure
+	int		x;
+	int		y;
 	int		exitx;
 	int		exity;
 	int		collects[100][2];
-	int		wallsmax; // number walls
-	int		collectmax; // number collectables
+	int		wallsmax;
+	int		collectmax;
 	int		walls[1000][2];
 
 }				t_window;
@@ -72,10 +66,9 @@ typedef struct s_counter
 	int	i;
 	int	x;
 	int	y;
-	int	j; // count collectables
-	int	t; // count walls
+	int	j;
+	int	t;
 }				t_counter;
-
 
 int		main(int argc, char *argv[]);
 
@@ -89,6 +82,7 @@ void	double_free(char **map_split, t_map *l_map);
 int		map_line(char *map, t_map *l_map);
 int		map_valid(t_map *l_map);
 int		checkmap(char *map, int *width, int *height);
+int		first_and_last(char *map, t_map *l_map, size_t *k, int lines);
 
 /* Creation map of the game */
 void	ft_game(char *map, int width, int height);
@@ -108,6 +102,7 @@ int		move_right(t_window *win);
 int		move_left(t_window *win);
 int		move_up(t_window *win);
 int		key_hook(int keycode, t_window *win);
+void	move(int keycode, t_window *win);
 
 /* Check for walls and collectables */
 int		walls_down(t_window *win);
@@ -116,17 +111,6 @@ int		walls_left(t_window *win);
 int		walls_up(t_window *win);
 int		collect(t_window *win);
 
-int	close_window(void);
-
-/*
-Copyrights images
-
-All the graphic tiles used in this program is the public domain roguelike tileset "RLTiles".
-Some of the tiles have been modified by me.
-
-You can find the original tileset at:
-http://rltiles.sf.net */
-
-/* */
+int		close_window(void);
 
 #endif

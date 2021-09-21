@@ -6,94 +6,14 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:38:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/20 17:28:49 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/21 12:12:28 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-/* Initialization of the struct l_map */
-void	map_init(t_map *l_map)
-{
-	l_map->c = 0;
-	l_map->e = 0;
-	l_map->p = 0;
-	l_map->x = 0;
-	l_map->y = 0;
-}
-
-int map_char(char *map, t_map *l_map)
-{
-	int	i;
-
-	i = 0;
-	while(map[i])
-	{
-		if (map[i] == 'C')
-			l_map->c ++;
-		else if (map[i] == 'E')
-			l_map->e ++;
-		else if (map[i] == 'P')
-			l_map->p ++;
-		else if (map[i] != '1' && map[i] != '0' && map[i] != '\n')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void numberofline(char *map, t_map *l_map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		if (map[i] == '\n')
-			l_map->y++;
-		i++;
-	}
-	return;
-}
-
-int	map_wall(char *map, t_map *l_map)
-{
-	int	i;
-	int	lines;
-
-	i = 0;
-	lines = 0;
-	numberofline(map, l_map);
-	while (map[i])
-	{
-		if (map[i] == '\n')
-		{
-			lines++;
-			if (map[i-1] != '1' || !((map[i+1] == '1') || (map[i+1] == '\0')))
-				return (0);
-		}
-		if (lines == 0 && map[i] != '1')
-			return (0);
-		if (lines == l_map->y)
-		{
-			i++;
-			while (map[i])
-			{
-				if (map[i]!= '1')
-					return (0);
-				i++;
-			}
-			i--;
-		}
-		i++;
-	}
-	return (1);
-}
-
 /* Free a two dimensional array */
-void double_free(char **map_split, t_map *l_map)
+void	double_free(char **map_split, t_map *l_map)
 {
 	int	i;
 
@@ -104,10 +24,10 @@ void double_free(char **map_split, t_map *l_map)
 		i++;
 	}
 	free(map_split);
-	return;
 }
 
-int map_line(char *map, t_map *l_map)
+/* Verify that the map is rectangular */
+int	map_line(char *map, t_map *l_map)
 {
 	int		i;
 	char	**map_split;
@@ -128,34 +48,38 @@ int map_line(char *map, t_map *l_map)
 	return (1);
 }
 
-int map_valid(t_map *l_map)
+/* Verify the elements in the map */
+int	map_valid(t_map *l_map)
 {
-	if (l_map->c >= 1 && l_map->p == 1 && l_map->e >= 1 &&
-		l_map->x >= 1 &&l_map->y >= 1)
+	if (l_map->c >= 1 && l_map->p == 1 && l_map->e >= 1
+		&& l_map->x >= 1 && l_map->y >= 1)
 		return (1);
 	else
 		return (0);
 }
 
+/* Verify if the format of the map is correct */
 int	checkmap(char *map, int *width, int *height)
 {
-	t_map l_map;
+	t_map	l_map;
 
 	map_init(&l_map);
-	if (!(map_char(map, &l_map)) || !(map_wall(map, &l_map)) || !(map_line(map, &l_map)) || !(map_valid(&l_map)))
+	if (!(map_char(map, &l_map)) || !(map_wall(map, &l_map))
+		|| !(map_line(map, &l_map)) || !(map_valid(&l_map)))
 		return (0);
 	*width = l_map.x;
 	*height = l_map.y + 1;
 	return (1);
 }
 
+/* Read the map and put it in a string */
 char	*ft_map_to_string(char *map)
 {
-	int fd;
-	char *str;
-	char *tmp;
-	int rt;
-	char buffer[2];
+	int		fd;
+	char	*str;
+	char	*tmp;
+	int		rt;
+	char	buffer[2];
 
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
