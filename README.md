@@ -52,8 +52,8 @@ Here is an example of a valid map (format expected .ber) to launch and play the 
 1111111111111111111111111111111111
 ```
 
-- 1 : Walls
-- E : Exit door
-- P : Figure
-- C : Collectables
-- 0 : Floors
+- <strong>1 </strong> : Walls
+- <strong>E </strong> : Exit
+- <strong>P </strong> : Player
+- <strong>C </strong> : Collectables
+- <strong>0 </strong> : Floors
