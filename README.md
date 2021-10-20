@@ -5,6 +5,8 @@ Summary
 This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use of basic algorithms, information research etc.
 As a graphic design project, so long will enable you to improve your skills in these areas: windows, colors, events, textures, etc.
 
+![so_long](https://github.com/williamollio/so_long/blob/master/gif/so_long.gif)
+
 Subject PDF : https://github.com/williamollio/so_long/blob/master/subject/so_long.pdf
 
 # Grade
@@ -37,7 +39,6 @@ Eat all the collectables with by controlling the figuring. When all the items ar
 | W | up |
 | esc | exit |
 
-![so_long](https://github.com/williamollio/so_long/blob/master/gif/so_long.gif)
 
 # Explanations
 
