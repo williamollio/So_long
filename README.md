@@ -37,6 +37,7 @@ Eat all the collectables with by controlling the figuring. When all the items ar
 | W | up |
 | esc | exit |
 
+![so_long](https://github.com/williamollio/so_long/blob/master/gif/so_long.gif)
 
 # Explanations
 
