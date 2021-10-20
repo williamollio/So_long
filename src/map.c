@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:38:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/21 12:12:28 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/19 15:18:43 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	checkmap(char *map, int *width, int *height)
 char	*ft_map_to_string(char *map)
 {
 	int		fd;
-	char	*str;
+	char	*str = NULL;
 	char	*tmp;
 	int		rt;
 	char	buffer[2];

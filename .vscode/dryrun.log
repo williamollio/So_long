@@ -1,0 +1,21 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/wiliamollio/Documents/42/42_projects/projects/so_long2'
+make -C ./libft
+ 
+cp ./libft/libft.a libft.a
+make -C ./minilibx
+cp ./minilibx/libmlx.a libmlx.a
+GCC -g -Wall -Wextra -Werror   -c -o src/main.o src/main.c
+GCC -g -Wall -Wextra -Werror   -c -o src/map.o src/map.c
+GCC -g -Wall -Wextra -Werror   -c -o src/map2.o src/map2.c
+ 
+GCC -g -Wall -Wextra -Werror   -c -o src/game.o src/game.c
+GCC -g -Wall -Wextra -Werror   -c -o src/push.o src/push.c
+ 
+GCC -g -Wall -Wextra -Werror   -c -o src/move.o src/move.c
+GCC -g -Wall -Wextra -Werror   -c -o src/move2.o src/move2.c
+ 
+GCC -g -Wall -Wextra -Werror   -c -o src/check.o src/check.c
+GCC -g -Wall -Wextra -Werror ./src/main.o ./src/map.o ./src/map2.o ./src/game.o ./src/push.o ./src/move.o ./src/move2.o ./src/check.o libft.a libmlx.a -framework OpenGL -framework AppKit -o so_long
+make: Leaving directory `/Users/wiliamollio/Documents/42/42_projects/projects/so_long2'
+ 

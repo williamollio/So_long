@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 10:07:09 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/21 11:53:58 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/19 15:14:14 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include <fcntl.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <stdio.h>
 
 /* Struct made for checking the format of the map in input */
 typedef struct map
