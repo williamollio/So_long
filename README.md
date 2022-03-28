@@ -1,16 +1,13 @@
 # 42 So_long
 
-Summary
+<strong>Summary</strong>
 
 This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use of basic algorithms, information research etc.
 As a graphic design project, so long will enable you to improve your skills in these areas: windows, colors, events, textures, etc.
 
 ![so_long](https://github.com/williamollio/so_long/blob/master/gif/so_long.gif)
 
-Subject PDF : https://github.com/williamollio/so_long/blob/master/subject/so_long.pdf
-
-# Grade
-[![wollio's 42Project Score](https://badge42.herokuapp.com/api/project/wollio/so_long)](https://github.com/williamollio/badge42)
+[Subject PDF](https://github.com/williamollio/so_long/blob/master/subject/so_long.pdf)
 
 # Clone
 Open a terminal and run following command:
